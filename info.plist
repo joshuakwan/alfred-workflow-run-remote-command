@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>joshuaguan.rch</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>517DE651-DC6E-4853-AF84-526D04E2AB06</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3DD2CED3-710B-4A33-BC22-9C871065A8C5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>792D8D98-F0AF-41AC-8499-57104D9D726D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>517DE651-DC6E-4853-AF84-526D04E2AB06</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>B11B132B-4A61-4C05-8F4F-2111F454E6C6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E26D3888-AA36-4E8B-BD45-6D30827CA563</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>E26D3888-AA36-4E8B-BD45-6D30827CA563</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FD086B42-AFB2-4BA2-B2BB-3E62F210827D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Joshua Guan</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Run Remote Command</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/usr/bin/python sethost.py "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E26D3888-AA36-4E8B-BD45-6D30827CA563</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>rseth</string>
+				<key>subtext</key>
+				<string>usage: rseth &lt;name&gt; "&lt;ssh command&gt;"</string>
+				<key>text</key>
+				<string>Setup a Host</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>B11B132B-4A61-4C05-8F4F-2111F454E6C6</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>title</key>
+				<string>Host Saved</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>FD086B42-AFB2-4BA2-B2BB-3E62F210827D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>import subprocess
+
+
+cmd = '{query}'
+process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+process.wait()
+
+for line in process.stdout.readlines():
+    print line</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>517DE651-DC6E-4853-AF84-526D04E2AB06</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>116</integer>
+				<key>keyword</key>
+				<string>rexec</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Please wait while the remote command is being executed...</string>
+				<key>script</key>
+				<string>/usr/bin/python pick_and_set.py "{query}"</string>
+				<key>title</key>
+				<string>Executing Remote Command</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>792D8D98-F0AF-41AC-8499-57104D9D726D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.output.largetype</string>
+			<key>uid</key>
+			<string>3DD2CED3-710B-4A33-BC22-9C871065A8C5</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>3DD2CED3-710B-4A33-BC22-9C871065A8C5</key>
+		<dict>
+			<key>ypos</key>
+			<real>220</real>
+		</dict>
+		<key>517DE651-DC6E-4853-AF84-526D04E2AB06</key>
+		<dict>
+			<key>ypos</key>
+			<real>220</real>
+		</dict>
+		<key>792D8D98-F0AF-41AC-8499-57104D9D726D</key>
+		<dict>
+			<key>ypos</key>
+			<real>220</real>
+		</dict>
+		<key>B11B132B-4A61-4C05-8F4F-2111F454E6C6</key>
+		<dict>
+			<key>ypos</key>
+			<real>70</real>
+		</dict>
+		<key>E26D3888-AA36-4E8B-BD45-6D30827CA563</key>
+		<dict>
+			<key>ypos</key>
+			<real>70</real>
+		</dict>
+		<key>FD086B42-AFB2-4BA2-B2BB-3E62F210827D</key>
+		<dict>
+			<key>ypos</key>
+			<real>70</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/joshuakwan</string>
+</dict>
+</plist>
